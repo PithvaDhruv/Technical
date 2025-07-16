@@ -1,0 +1,55 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+.container
+{
+    display: flex;
+    /* flex-direction:column; */
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    text-align: center;
+}
+
+header
+{
+    background: blueviolet;   
+}
+
+main
+{
+    background: skyblue;
+}
+
+footer
+{
+    background:yellow;
+}
+
+header,main,footer
+{
+    width:100%;
+}
+
+
+@media (max-width:768px)
+
+{
+    .container
+    {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    header, main, footer {
+        width: auto;
+        padding: 20px;
+        flex-grow: 1;
+    } 
+
+}
+
