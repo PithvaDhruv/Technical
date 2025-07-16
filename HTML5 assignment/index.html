@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contact Form with Map</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- contact section container -->
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        <!-- contact form starts -->
+        <form id="contactForm" onsubmit="return validateForm();">
+            <!-- name input -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-box" placeholder="Enter your name" required>
+
+            <!-- mobile input -->
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" class="input-box" placeholder="Enter your mobile number" required>
+
+            <!-- message input -->
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="input-box" placeholder="Type your message" required></textarea>
+
+            <!-- submit button -->
+            <input type="submit" value="Submit" class="btn">
+        </form>
+
+        <!-- embedded google map -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1241718121896!2d-122.40143878467785!3d37.793616679756454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064b7c9a7e9%3A0x28abf4d9ecbfb6e4!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2sin!4v1617267371490!5m2!1sen!2sin" 
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- form validation script -->
+    <script>
+        // form validation function
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var mobile = document.getElementById("mobile").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // check if any field is empty
+            if (name === "" || mobile === "" || message === "") {
+                alert("Please fill all the fields.");
+                return false;
+            }
+
+            // name validation: only letters, 3 to 6 characters
+            var nameRegex = /^[a-zA-Z]{3,6}$/;
+            if (!nameRegex.test(name)) {
+                alert("Name must be 3-6 alphabets only.");
+                return false;
+            }
+
+            // mobile validation: only 10 digit numbers
+            var mobileRegex = /^[0-9]{10}$/;
+            if (!mobileRegex.test(mobile)) {
+                alert("Mobile must be 10 digits only (no letters or symbols).");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+
+</body>
+</html>
